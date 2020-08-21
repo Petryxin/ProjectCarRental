@@ -1,19 +1,22 @@
 package by.grickevich.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "logbook")
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer"})
 public class Logbook {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @Column(name = "arrivalDate")
-    private String arrivalDate;
+    private Integer id;
 
     @Column(name = "damageCar")
     private String damageCar;
@@ -25,20 +28,21 @@ public class Logbook {
     @JsonIgnore
     private Car car;
 
-    public Long getId() {
+    @OneToOne(fetch = FetchType.LAZY, mappedBy= "logbook",cascade = CascadeType.ALL)
+    @JsonIgnore
+    private RepairBill repairBill;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @Fetch(FetchMode.JOIN)
+    @JoinTable(joinColumns = @JoinColumn(name = "logbook_id"), inverseJoinColumns = @JoinColumn(name = "admin_id"))
+    private Set<Administrator> admins = new HashSet<Administrator>();
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getArrivalDate() {
-        return arrivalDate;
-    }
-
-    public void setArrivalDate(String arrivalDate) {
-        this.arrivalDate = arrivalDate;
     }
 
     public String getDamageCar() {
@@ -63,5 +67,21 @@ public class Logbook {
 
     public void setCar(Car car) {
         this.car = car;
+    }
+
+    public Set<Administrator> getAdmins() {
+        return admins;
+    }
+
+    public void setAdmins(Set<Administrator> admins) {
+        this.admins = admins;
+    }
+
+    public RepairBill getRepairBill() {
+        return repairBill;
+    }
+
+    public void setRepairBill(RepairBill repairBill) {
+        this.repairBill = repairBill;
     }
 }

@@ -11,8 +11,8 @@ public abstract class Order_ {
 	public static volatile SingularAttribute<Order, Passport> passport;
 	public static volatile SingularAttribute<Order, Car> car;
 	public static volatile SingularAttribute<Order, String> rentalTime;
-	public static volatile SingularAttribute<Order, Long> id;
-	public static volatile SingularAttribute<Order, String> totalRentPrice;
+	public static volatile SingularAttribute<Order, Integer> id;
+	public static volatile SingularAttribute<Order, Double> totalRentPrice;
 
 	public static final String PASSPORT = "passport";
 	public static final String CAR = "car";

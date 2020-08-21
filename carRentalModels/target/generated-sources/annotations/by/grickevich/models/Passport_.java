@@ -16,7 +16,7 @@ public abstract class Passport_ {
 	public static volatile SingularAttribute<Passport, String> surname;
 	public static volatile SingularAttribute<Passport, String> name;
 	public static volatile SetAttribute<Passport, Order> orders;
-	public static volatile SingularAttribute<Passport, Long> id;
+	public static volatile SingularAttribute<Passport, Integer> id;
 	public static volatile SingularAttribute<Passport, String> dateOfIssue;
 
 	public static final String PASSPORT_NUMBER = "passportNumber";

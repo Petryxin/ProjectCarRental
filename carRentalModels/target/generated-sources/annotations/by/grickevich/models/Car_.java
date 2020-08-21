@@ -12,7 +12,7 @@ public abstract class Car_ {
 	public static volatile SingularAttribute<Car, String> carType;
 	public static volatile SingularAttribute<Car, Double> carPrice;
 	public static volatile SetAttribute<Car, Order> orders;
-	public static volatile SingularAttribute<Car, Long> id;
+	public static volatile SingularAttribute<Car, Integer> id;
 	public static volatile SetAttribute<Car, Logbook> logs;
 	public static volatile SingularAttribute<Car, Integer> year_of_issue;
 	public static volatile SingularAttribute<Car, String> carModel;

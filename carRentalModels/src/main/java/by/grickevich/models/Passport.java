@@ -14,23 +14,9 @@ import java.util.Set;
 @Table(name = "Passport")
 public class Passport{
 
-    public Passport() {
-    }
-
-    public Passport(Long id, String passportSerial, String passportNumber, String dateOfIssue, String dateOfExpiry, String countryOfIssue, String surname, String name) {
-        this.id = id;
-        this.passportSerial = passportSerial;
-        this.passportNumber = passportNumber;
-        this.dateOfIssue = dateOfIssue;
-        this.dateOfExpiry = dateOfExpiry;
-        this.countryOfIssue = countryOfIssue;
-        this.surname = surname;
-        this.name = name;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
 
     @Column(name = "identification_number")
     private String passportSerial;
@@ -58,11 +44,11 @@ public class Passport{
     @JoinTable(joinColumns = @JoinColumn(name = "passport_id"), inverseJoinColumns = @JoinColumn(name = "order_id"))
     private Set<Order> orders = new HashSet<>();
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

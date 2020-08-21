@@ -1,6 +1,7 @@
 package by.grickevich.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 import javax.persistence.*;
@@ -8,16 +9,17 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "user_order")
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer"})
 public class Order{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
 
     @Column(name = "rentalTime")
     private String rentalTime;
 
     @Column(name = "totalRentPrice")
-    private String totalRentPrice; //type String or Double
+    private Double totalRentPrice; //type String or Double
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JsonIgnore
@@ -27,11 +29,11 @@ public class Order{
     @JsonIgnore
     private Passport passport;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -43,11 +45,11 @@ public class Order{
         this.rentalTime = rentalTime;
     }
 
-    public String getTotalRentPrice() {
+    public Double getTotalRentPrice() {
         return totalRentPrice;
     }
 
-    public void setTotalRentPrice(String totalRentPrice) {
+    public void setTotalRentPrice(Double totalRentPrice) {
         this.totalRentPrice = totalRentPrice;
     }
 

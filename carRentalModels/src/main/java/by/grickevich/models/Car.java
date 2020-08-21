@@ -14,7 +14,7 @@ public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
 
     @Column(name = "carType")
     private String carType; //50/50
@@ -39,15 +39,15 @@ public class Car {
 
     @OneToMany(cascade = CascadeType.ALL)
     @Fetch(FetchMode.JOIN)
-    @JoinTable(joinColumns = @JoinColumn(name = "car_id"), inverseJoinColumns = @JoinColumn(name = "order_id"))
+    @JoinTable(joinColumns = @JoinColumn(name = "car_id"), inverseJoinColumns = @JoinColumn(name = "logs_id"))
     private Set<Logbook> logs = new HashSet<>();
 
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

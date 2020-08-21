@@ -21,7 +21,7 @@ public class Controller {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Passport createPassport (@RequestParam Passport passport) {
+    public Passport createPassport (@RequestBody Passport passport) {
         return repo.createPassport(passport);
     }
 
