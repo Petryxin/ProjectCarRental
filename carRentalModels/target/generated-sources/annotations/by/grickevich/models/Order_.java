@@ -10,7 +10,7 @@ public abstract class Order_ {
 
 	public static volatile SingularAttribute<Order, Passport> passport;
 	public static volatile SingularAttribute<Order, Car> car;
-	public static volatile SingularAttribute<Order, String> rentalTime;
+	public static volatile SingularAttribute<Order, Integer> rentalTime;
 	public static volatile SingularAttribute<Order, Integer> id;
 	public static volatile SingularAttribute<Order, Double> totalRentPrice;
 

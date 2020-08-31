@@ -18,8 +18,11 @@ public class Administrator {
     @Column(name = "password")
     private String password;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JsonIgnore
+    @Column(name = "name")
+    private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "logbook_id", nullable = false)
     private Logbook logbook;
 
     public Integer getId() {

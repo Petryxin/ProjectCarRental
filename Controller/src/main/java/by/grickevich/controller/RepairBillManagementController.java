@@ -2,7 +2,7 @@ package by.grickevich.controller;
 
 import by.grickevich.models.RepairBill;
 
-import by.grickevich.service.RepairBillService;
+import by.grickevich.service.interfaces.RepairBillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

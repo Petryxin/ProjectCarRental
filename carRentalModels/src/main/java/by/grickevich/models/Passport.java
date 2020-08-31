@@ -2,9 +2,6 @@ package by.grickevich.models;
 
 
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
 import java.util.HashSet;
 
@@ -39,9 +36,7 @@ public class Passport{
     @Column(name = "name")
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @Fetch(FetchMode.JOIN)
-    @JoinTable(joinColumns = @JoinColumn(name = "passport_id"), inverseJoinColumns = @JoinColumn(name = "order_id"))
+    @OneToMany(mappedBy = "passport" , fetch = FetchType.EAGER)
     private Set<Order> orders = new HashSet<>();
 
     public Integer getId() {

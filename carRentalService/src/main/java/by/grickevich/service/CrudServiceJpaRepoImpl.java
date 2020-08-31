@@ -1,11 +1,12 @@
 package by.grickevich.service;
 
+import by.grickevich.service.CrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public class CrudServiceJpaRepoImpl<T> implements CrudService<T>{
+public class CrudServiceJpaRepoImpl<T> implements CrudService<T> {
 
 	@Autowired
 	private JpaRepository<T, Integer> repo;

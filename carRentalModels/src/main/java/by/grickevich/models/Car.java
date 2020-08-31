@@ -1,9 +1,6 @@
 package by.grickevich.models;
 
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -28,18 +25,10 @@ public class Car {
     @Column(name = "carPrice")
     private Double carPrice;
 
-    //@ManyToMany(mappedBy = "cars",cascade = CascadeType.ALL)
-    //@JsonIgnore
-    //private Set<AutoParts> autoParts = new HashSet<>();
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @Fetch(FetchMode.JOIN)
-    @JoinTable(joinColumns = @JoinColumn(name = "car_id"), inverseJoinColumns = @JoinColumn(name = "order_id"))
+    @OneToMany(mappedBy = "car" , fetch = FetchType.EAGER)
     private Set<Order> orders = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @Fetch(FetchMode.JOIN)
-    @JoinTable(joinColumns = @JoinColumn(name = "car_id"), inverseJoinColumns = @JoinColumn(name = "logs_id"))
+    @OneToMany(mappedBy = "carForLogs" , fetch = FetchType.EAGER)
     private Set<Logbook> logs = new HashSet<>();
 
 

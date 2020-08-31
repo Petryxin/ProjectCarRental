@@ -2,6 +2,10 @@ package by.grickevich.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 
 import javax.persistence.*;
@@ -16,17 +20,17 @@ public class Order{
     private Integer id;
 
     @Column(name = "rentalTime")
-    private String rentalTime;
+    private Integer rentalTime;
 
     @Column(name = "totalRentPrice")
-    private Double totalRentPrice; //type String or Double
+    private Double totalRentPrice;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JsonIgnore
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "car_id")
     private Car car;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JsonIgnore
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "passport_id")
     private Passport passport;
 
     public Integer getId() {
@@ -37,11 +41,11 @@ public class Order{
         this.id = id;
     }
 
-    public String getRentalTime() {
+    public Integer getRentalTime() {
         return rentalTime;
     }
 
-    public void setRentalTime(String rentalTime) {
+    public void setRentalTime(Integer rentalTime) {
         this.rentalTime = rentalTime;
     }
 

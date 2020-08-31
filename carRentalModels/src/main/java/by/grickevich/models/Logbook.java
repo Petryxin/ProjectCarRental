@@ -24,18 +24,16 @@ public class Logbook {
     @Column(name = "descriptionDamage")
     private String descriptionDamage;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JsonIgnore
-    private Car car;
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "car_id")
+    private Car carForLogs;
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy= "logbook",cascade = CascadeType.ALL)
     @JsonIgnore
     private RepairBill repairBill;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @Fetch(FetchMode.JOIN)
-    @JoinTable(joinColumns = @JoinColumn(name = "logbook_id"), inverseJoinColumns = @JoinColumn(name = "admin_id"))
-    private Set<Administrator> admins = new HashSet<Administrator>();
+    @OneToMany(mappedBy = "logbook",cascade = CascadeType.ALL,fetch = FetchType.EAGER, orphanRemoval = true )
+    private Set<Administrator> admins = new HashSet<>();
 
     public Integer getId() {
         return id;
@@ -61,12 +59,12 @@ public class Logbook {
         this.descriptionDamage = descriptionDamage;
     }
 
-    public Car getCar() {
-        return car;
+    public Car getCarForLogs() {
+        return carForLogs;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setCarForLogs(Car carForLogs) {
+        this.carForLogs = carForLogs;
     }
 
     public Set<Administrator> getAdmins() {

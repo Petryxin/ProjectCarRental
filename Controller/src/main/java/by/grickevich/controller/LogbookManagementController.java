@@ -1,7 +1,7 @@
 package by.grickevich.controller;
 
 import by.grickevich.models.Logbook;
-import by.grickevich.service.LogbookService;
+import by.grickevich.service.interfaces.LogbookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

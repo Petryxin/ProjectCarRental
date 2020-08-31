@@ -1,7 +1,7 @@
 package by.grickevich.controller;
 
 import by.grickevich.models.Tenant;
-import by.grickevich.service.TenantService;
+import by.grickevich.service.interfaces.TenantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
