@@ -1,8 +1,9 @@
 package by.grickevich.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "administrator")
@@ -21,9 +22,8 @@ public class Administrator {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "logbook_id", nullable = false)
-    private Logbook logbook;
+    @OneToMany(mappedBy = "admins", fetch = FetchType.EAGER)
+    private Set<Logbook> logbook = new HashSet<>();
 
     public Integer getId() {
         return id;
@@ -49,13 +49,22 @@ public class Administrator {
         this.password = password;
     }
 
-    public Logbook getLogbook() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<Logbook> getLogbook() {
         return logbook;
     }
 
-    public void setLogbook(Logbook logbook) {
+    public void setLogbook(Set<Logbook> logbook) {
         this.logbook = logbook;
     }
+
     //прием машины,
     //её осмотр - выбор поврежденных элементов если такие присутствуют
     //выставляет счет

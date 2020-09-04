@@ -15,6 +15,9 @@ public class RepairBill {
     @Column(name = "repair_amount")
     private Double repairAmount;
 
+    @Column(name = "description_repair")
+    private String descriptionRepair;
+
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "logbook_id", referencedColumnName = "id")
     private Logbook logbook;
@@ -43,4 +46,11 @@ public class RepairBill {
         this.logbook = logbook;
     }
 
+    public String getDescriptionRepair() {
+        return descriptionRepair;
+    }
+
+    public void setDescriptionRepair(String descriptionRepair) {
+        this.descriptionRepair = descriptionRepair;
+    }
 }
