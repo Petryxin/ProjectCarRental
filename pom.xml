@@ -10,10 +10,9 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>carRentalModels</module>
-        <module>carRentalService</module>
-        <module>carRentalApplication</module>
-        <module>Controller</module>
+        <module>repository</module>
+        <module>service</module>
+        <module>webapp</module>
     </modules>
 
     <properties>
@@ -23,12 +22,9 @@
 
         <junit.version>5.4.0</junit.version>
 
-        <hibernate-entitymanager.version>5.4.18.Final</hibernate-entitymanager.version>
-        <version.org.hibernate>5.4.18.Final</version.org.hibernate>
-        <version.org.hibernate-validator>5.3.5.Final</version.org.hibernate-validator>
-
         <postgresql.version>42.2.14</postgresql.version>
         <spring-boot-starter.version>2.2.6.RELEASE</spring-boot-starter.version>
+        <spring-boot-devtools.version>2.2.6.RELEASE</spring-boot-devtools.version>
         <jackson.version>2.9.6</jackson.version>
 
     </properties>
@@ -39,28 +35,8 @@
         <version>2.2.6.RELEASE</version>
     </parent>
 
-
-
     <dependencyManagement>
         <dependencies>
-
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-jpamodelgen</artifactId>
-                <version>${version.org.hibernate}</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-core</artifactId>
-                <version>${version.org.hibernate}</version>
-                <scope>compile</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-validator</artifactId>
-                <version>${version.org.hibernate-validator}</version>
-            </dependency>
 
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
@@ -93,9 +69,9 @@
             </dependency>
 
             <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-entitymanager</artifactId>
-                <version>${hibernate-entitymanager.version}</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-devtools</artifactId>
+                <version>${spring-boot-devtools.version}</version>
             </dependency>
 
             <dependency>
